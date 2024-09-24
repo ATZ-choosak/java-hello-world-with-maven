@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        maven 'maven'
-        jdk 'java'
+        maven 'Maven 3.9.9'
+        jdk 'JDK 11'
     }
 
     stages {
@@ -15,14 +15,12 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Build and package the project using Maven
                 sh 'mvn clean package'
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
-                // SonarQube analysis using Maven
                 sh '''
                     mvn clean verify sonar:sonar \
                     -Dsonar.projectKey=coe6410110109 \
